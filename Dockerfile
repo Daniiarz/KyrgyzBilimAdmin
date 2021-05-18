@@ -6,6 +6,8 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-COPY . /app
+COPY . .
 
-CMD sh -c "python manage.py migrate && gunicorn -w 3 -b 0.0.0.0:8000 admin.wsgi"
+RUN chmod 755 start-server.sh
+
+CMD ["/usr/src/admin/start-server.sh"]

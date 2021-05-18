@@ -16,7 +16,7 @@ class Course(models.Model):
 class Section(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='sections')
     name = models.CharField(max_length=255)
-    icon = models.ImageField(upload_to='section/')
+    icon = models.ImageField(upload_to='section/', blank=True, null=True)
 
     class Meta:
         db_table = 'sections'
@@ -29,9 +29,9 @@ class Section(models.Model):
 class Topic(models.Model):
     section = models.ForeignKey(Section, on_delete=models.CASCADE, related_name='topics')
     name = models.CharField(max_length=255)
-    translated_name = models.CharField(max_length=255)
-    icon = models.FileField(upload_to='section/')
-    type = models.CharField(max_length=255)
+    translated_name = models.CharField(max_length=255, blank=True, null=True)
+    icon = models.FileField(upload_to='section/', blank=True, null=True)
+    type = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         db_table = 'topics'
@@ -44,9 +44,9 @@ class Topic(models.Model):
 class SubTopic(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name='subtopics')
     text = models.TextField()
-    translated_text = models.TextField()
-    audio = models.FileField(upload_to='audio/')
-    image = models.FileField(upload_to='subtopic/')
+    translated_text = models.TextField(blank=True, null=True)
+    audio = models.FileField(upload_to='audio/', blank=True, null=True)
+    image = models.FileField(upload_to='subtopic/', blank=True, null=True)
 
     class Meta:
         db_table = 'sub_topics'
