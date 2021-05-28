@@ -8,7 +8,7 @@ class Course(models.Model):
     class Meta:
         db_table = 'courses'
         managed = False
-
+    
     def __str__(self):
         return self.name
 
@@ -17,7 +17,12 @@ class Section(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='sections')
     name = models.CharField(max_length=255)
     icon = models.ImageField(upload_to='section/', blank=True, null=True)
+    type = models.CharField(max_length=255, blank=True, null=True)
 
+    def save(self, *args, **kwargs):
+        self.type = self.name
+        super(Section, self).save(*args, **kwargs)
+    
     class Meta:
         db_table = 'sections'
         managed = False
