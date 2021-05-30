@@ -58,4 +58,4 @@ class SubTopic(models.Model):
         managed = False
 
     def __str__(self):
-        return self.text
+        return f'{self.text} - {self.topic.name}'
