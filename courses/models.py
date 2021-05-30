@@ -22,13 +22,13 @@ class Section(models.Model):
     def save(self, *args, **kwargs):
         self.type = self.name
         super(Section, self).save(*args, **kwargs)
-    
+
     class Meta:
         db_table = 'sections'
         managed = False
 
     def __str__(self):
-        return self.name
+        return f"{self.name} - {self.course.name}"
 
 
 class Topic(models.Model):
