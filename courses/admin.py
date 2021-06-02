@@ -14,4 +14,3 @@ class SubtopicAdmin(admin.ModelAdmin):
 admin.site.register(models.Course)
 admin.site.register(models.Section)
 admin.site.register(models.Topic)
-admin.site.register(models.SubTopic)
