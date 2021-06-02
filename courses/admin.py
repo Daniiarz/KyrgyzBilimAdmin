@@ -8,7 +8,7 @@ from . import models
 class SubtopicAdmin(admin.ModelAdmin):
     list_display = ('text', 'topic_name')
     search_fields = ('text',)
-    list_filter = ('topic__name',)
+    list_filter = ('topic',)
 
     def topic_name(self, obj):
         return obj.topic.name
