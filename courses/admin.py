@@ -6,9 +6,12 @@ from . import models
 
 @admin.register(models.SubTopic)
 class SubtopicAdmin(admin.ModelAdmin):
-    list_display = ('text', 'topic__name')
+    list_display = ('text', 'topic_name')
     search_fields = ('text',)
     list_filter = ('topic__name',)
+
+    def topic_name(self, obj):
+        return obj.topic.name
 
 
 admin.site.register(models.Course)
