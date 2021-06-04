@@ -9,7 +9,7 @@ class SubtopicAdmin(admin.ModelAdmin):
     list_display = ('text', 'topic_name')
     search_fields = ('text', )
     list_filter = ('topic',)
-    list_editable = ('icon', 'image')
+    list_editable = ('audio', 'image')
 
     def topic_name(self, obj):
         return obj.topic.name
